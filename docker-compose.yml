@@ -1,6 +1,14 @@
 version: "3.9"
 
 services:
+
+  nginx:
+    image: nginx:latest
+    container_name: "nginx"
+    ports:
+      - "9900:80"
+    restart: "unless-stopped"
+
   ton-site:
     container_name: "ton-site"
     image: ganindmitry63/ton-site:latest
@@ -11,8 +19,8 @@ services:
     environment:
       SERVER_IP: "YOUR_IP"
       ADNL_PORT: "3333"
-      REMOTE_IP: "REMOTE_IP"
-      REMOTE_PORT: "443"
+      REMOTE_IP: "127.0.0.1"
+      REMOTE_PORT: "9900"
     volumes:
       - "./global.config.json:/app/global.config.json"
       - "./keyring:/app/keyring"
