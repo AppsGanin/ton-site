@@ -8,6 +8,9 @@ services:
     ports:
       - "9900:80"
     restart: "unless-stopped"
+    volumes:
+      - ./conf:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html:ro
 
   ton-site:
     container_name: "ton-site"
