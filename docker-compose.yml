@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  ton-site:
+    container_name: "ton-site"
+    image: ganindmitry63/ton-site:latest
+    restart: "unless-stopped"
+    network_mode: "host"
+    env_file:
+      - ./.env
+    environment:
+      SERVER_IP: "YOUR_IP"
+      ADNL_PORT: "3333"
+      REMOTE_IP: "REMOTE_IP"
+      REMOTE_PORT: "443"
+    volumes:
+      - "./global.config.json:/app/global.config.json"
+      - "./keyring:/app/keyring"
+    ports:
+      - "3333:3333"
