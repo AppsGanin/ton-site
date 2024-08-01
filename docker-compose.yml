@@ -9,6 +9,7 @@ services:
       - "9900:80"
     restart: "unless-stopped"
     volumes:
+      - ./nginx/sites-enabled:/etc/nginx/conf.d
       - ./nginx/html:/usr/share/nginx/html:ro
 
   ton-site:
